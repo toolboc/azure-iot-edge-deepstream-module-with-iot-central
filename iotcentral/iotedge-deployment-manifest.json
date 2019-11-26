@@ -1,0 +1,74 @@
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {}
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "createOptions": "{}"
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
+            }
+          }
+        },
+        "modules": {
+          "NVIDIADeepStreamSDK": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "marketplace.azurecr.io/nvidia/deepstream-iot-l4t@sha256:d452eed1bed8970bed4e1008d182a0eec7bc83dcda1306c50513b79f2d989942",
+              "createOptions": "{\"Entrypoint\":[\"/usr/bin/deepstream-test5-app\",\"-c\",\"/opt/nvidia/deepstream/deepstream-4.0/samples/configs/deepstream-app/source4_usb_rtsp_dec_infer_resnet_int8.txt\",\"-p\",\"1\",\"-m\",\"1\"],\"HostConfig\":{\"runtime\":\"nvidia\",\"Binds\":[\"/opt/nvidia/deepstream/deepstream-4.0/samples:/opt/nvidia/deepstream/deepstream-4.0/samples\",\"/run/systemd:/run/systemd\",\"/var/run/docker.sock:/var/run/docker.sock\"]},\"WorkingDir\":\"/root/deepstream_sdk_v4.0.1_jetson/sources/apps/sample_apps/deepstream-test5/configs/\"}"
+            }
+          },
+          "NVIDIANanoIotCModule": {
+            "settings": {
+              "image": "toolboc/nvidia-nano-iotc-module",
+              "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"9014/tcp\":[{\"HostPort\":\"9014\"}]},\"Binds\":[\"/data/misc:/data/misc\",\"/run/systemd:/run/systemd\",\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
+            },
+            "type": "docker",
+            "env": {
+              "DEBUG_TELEMETRY": {
+                "value": "1"
+              }
+            },
+            "status": "running",
+            "restartPolicy": "always",
+            "version": "1.0"
+          }
+        }
+      }
+    },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "DeepstreamToFilter": "FROM /messages/modules/NVIDIADeepStreamSDK/outputs/* INTO BrokeredEndpoint(\"/modules/NVIDIANanoIotCModule/inputs/dsmessages\")",
+          "filterToIoTHub": "FROM /messages/* INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 7200
+        }
+      }
+    }
+  }
+}
