@@ -150,7 +150,7 @@ To pull in this configuration, run the following in a terminal on the Nvidia Jet
 
     wget https://raw.githubusercontent.com/toolboc/azure-iot-edge-deepstream-module-with-iot-central/master/deepstream/configs/msgconv_sample_config.txt -P /opt/nvidia/deepstream/deepstream-4.0/samples/configs/deepstream-app
 
-    wget https://github.com/toolboc/azure-iot-edge-deepstream-module-with-iot-central/blob/master/deepstream/configs/source4_usb_rtsp_dec_infer_resnet_int8.txt -P /opt/nvidia/deepstream/deepstream-4.0/samples/configs/deepstream-app
+    wget https://raw.githubusercontent.com/toolboc/azure-iot-edge-deepstream-module-with-iot-central/master/deepstream/configs/source4_usb_rtsp_dec_infer_resnet_int8.txt -P /opt/nvidia/deepstream/deepstream-4.0/samples/configs/deepstream-app
 
 Next, you will need to modify these configurations to match your setup.  
 
