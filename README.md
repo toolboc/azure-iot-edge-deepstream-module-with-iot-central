@@ -170,9 +170,9 @@ The `source1`, `source2`, and `source3` entries are for using RTSP streaming pro
 
 Following the source entries, you will notice a number of entries for `sink0` and `sink1`.  Sinks are where output is delivered and can vary on what that means depending on the type of sink employed.  
 
-For `sink1` we employ the overlay type which draws the video output with processing results and detected bounding boxes directly to the framebuffer.  This means it will draw the output over anything currently on screen. With proper configuration, you can draw output to a window using the EglSink type but that will not be covered as it requires special configuration of x11 permissions in the IoT Edge deployment manifest and host machine in order to access the host's X11 server from a container.  
+For `sink0` we employ the overlay type which draws the video output with processing results and detected bounding boxes directly to the framebuffer.  This means it will draw the output over anything currently on screen. With proper configuration, you can draw output to a window using the EglSink type but that will not be covered as it requires special configuration of x11 permissions in the IoT Edge deployment manifest and host machine in order to access the host's X11 server from a container.  
 
-For `sink2` we employ the MsgConvBroker to format the detection output into a consumable format for Azure IoT Edge.  This produces lightweight object detection output that looks like the following:
+For `sink1` we employ the MsgConvBroker to format the detection output into a consumable format for Azure IoT Edge.  This produces lightweight object detection output that looks like the following:
 
     [101|192|264|236|458|Person]
 
@@ -184,7 +184,7 @@ It is important to note the `primary-gie` section of our configuration.  This sp
 
 ## Testing the custom DeepStream Configuration
 
-To test your configuration, it is important to temporarily disable `sink2` by setting enable=0, then you can run using deepstream-app to verify your video input sources are working with:
+To test your configuration, it is important to temporarily disable `sink1` by setting enable=0, then you can run using deepstream-app to verify your video input sources are working with:
 
     deepstream-app -c /opt/nvidia/deepstream/deepstream-4.0/samples/configs/deepstream-app/source4_usb_rtsp_dec_infer_resnet_int8.txt
 
@@ -192,7 +192,7 @@ This is what this looks like when configured with three RTSP sources:
 
 ![](./assets/deepstreamtest.png)
 
-When you have verified your configuration is working, re-enable `sink2` by setting enable=1 as it is necessary for publishing data to IoT Central when running as an IoT Edge module, which we will do in the next steps.
+When you have verified your configuration is working, re-enable `sink1` by setting enable=1 as it is necessary for publishing data to IoT Central when running as an IoT Edge module, which we will do in the next steps.
 
 ## Provisioning the IoT Edge Runtime on the Jetson Nano Device with DPS
 
@@ -261,7 +261,15 @@ Initially, your device will show a status of "Registered" in the IoT Central por
 
 ![](./assets/deviceregistered.png)
 
-Once the iotedge service has restarted successfully and connected to IoT Central the status will change to "Provisioned"
+Double-check your settings under "Administration" => "Device Connection".  If "Auto Approve" is disabled, you will need to manually approve the device.
+
+![](./assets/autoapprovedisabled.png)
+
+To manually approve the device, select the "Approve" option after selecting the device on the "Devices" page.  If "Auto Approve" is enabled, you may skip this step.
+
+![](./assets/deviceapprove.png)
+
+Once the iotedge service has restarted successfully and connected to IoT Central the status will change to "Provisioned"  
 
 ![](./assets/deviceprovisioned.png)
 
