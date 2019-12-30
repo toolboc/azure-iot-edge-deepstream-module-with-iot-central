@@ -2,7 +2,14 @@
 
 Demonstration using the the [Nvidia DeepStream Module from the Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/nvidia.deepstream-iot?WT.mc_id=webinar-particle-pdecarlo) with [Azure IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/preview/overview-iot-central?WT.mc_id=webinar-particle-pdecarlo).
 
-To setup the demo for yourself, or to use as a baseline for your own custom project, follow the instruction below to get started!
+To setup the demo for yourself, or to use as a baseline for your own custom project, follow the instructions below to get started!
+
+
+# Supplementary Materials 
+
+* [Presentation Deck](http://aka.ms/DeepStreamIoTEdgeDeck)
+* [Presentation Video](http://aka.ms/DeepStreamIoTEdgeVideo)
+- Note: The Presentation Video includes a full walkthrough for setting up and using the demo content in this repo
 
 ## Prerequisites
 
