@@ -137,13 +137,13 @@ sudo apt-get install iotedge
 
 The following steps will require that you have an Nvidia Jetson device configured with the latest JetPack offering from Nvidia and an ability to interact with the device via ssh or a connected keyboard/mouse/monitor.
 
-First, we will need to [download the latest DeepStream 4.0.1 .deb installer](https://developer.nvidia.com/deepstream-401-jetson-deb) for your Jetson Device. This will require that you create an Nvidia Developer Account. Once you have registered and logged in, you will be presented with the ability to download the SDK using the aforementioned link:
+First, we will need to [download the latest DeepStream 4.0.2 .deb installer](https://developer.nvidia.com/deepstream-402-jetson-deb) for your Jetson Device. This will require that you create an Nvidia Developer Account. Once you have registered and logged in, you will be presented with the ability to download the SDK using the aforementioned link:
 
 ![](./assets/deepstreamdeb.png)
 
 After downloading the .deb, navigate to the directory where the .deb installer was saved (e.g. ~/Downloads) and install it by running the following:
 cd ~/Downloads
-sudo apt-get install ./deepstream-4.0_4.0.1-1_arm64.deb
+sudo apt-get install ./deepstream-4.0_4.0.2-1_arm64.deb
 
 If you have issues installing the DeepStream SDK, refer to the [official DeepStream Developer Guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html#page/DeepStream_Development_Guide%2Fdeepstream_quick_start.html) for more information.
 
