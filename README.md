@@ -315,7 +315,7 @@ Name the View "Device" and add the following properties:
 
 Select "Add Tile" then "Save":
 
-![](./assets/newviewsaved)
+![](./assets/newviewsaved.png)
 
 Create another View by selecting "Views" => "Visualizing the Device"
 
