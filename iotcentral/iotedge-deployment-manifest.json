@@ -37,7 +37,8 @@
             "restartPolicy": "always",
             "settings": {
               "image": "marketplace.azurecr.io/nvidia/deepstream-iot2-l4t:latest",
-              "createOptions": "{\"Entrypoint\":[\"/usr/bin/deepstream-test5-app\",\"-c\",\"/opt/nvidia/deepstream/deepstream-4.0/samples/configs/deepstream-app/source4_usb_rtsp_dec_infer_resnet_int8.txt\",\"-p\",\"1\",\"-m\",\"1\"],\"HostConfig\":{\"runtime\":\"nvidia\",\"Binds\":[\"/opt/nvidia/deepstream/deepstream-4.0/samples:/opt/nvidia/deepstream/deepstream-4.0/samples\",\"/run/systemd:/run/systemd\",\"/var/run/docker.sock:/var/run/docker.sock\"]},\"WorkingDir\":\"/root/deepstream_sdk_v4.0.1_jetson/sources/apps/sample_apps/deepstream-test5/configs/\"}"
+              "createOptions": "{\"Entrypoint\":[\"/usr/bin/deepstream-test5-app\",\"-c\",\"/opt/nvidia/deepstream/deepstream-4.0/samples/configs/deepstream-app/source4_usb_rtsp_dec_infer_resnet_int8.txt\",\"-p\",\"1\",\"-m\",\"1\"],\"HostConfig\":{\"runtime\":\"nvidia\",\"NetworkMode\":\"host\",\"Binds\":[\"/opt/nvidia/deepstream/deepstream-4.0/samples:/opt/nvidia/deepstream/deepstream-4.0/samples\",\"/run/systemd:/run/systemd\",\"/var/run/docker.sock:/var/run/docker.sock\"]},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"WorkingDir\":\"/root/deepstream_sdk_v4.0.1_jet",
+              "createOptions01": "son/sources/apps/sample_apps/deepstream-test5/configs/\"}"
             }
           },
           "NVIDIANanoIotCModule": {
