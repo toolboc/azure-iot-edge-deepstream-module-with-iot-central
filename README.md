@@ -1,6 +1,6 @@
 # Azure IoT Edge DeepStream Module with IoT Central
 
-Demonstration using the the [Nvidia DeepStream Module from the Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/nvidia.deepstream-iot?WT.mc_id=webinar-particle-pdecarlo) with [Azure IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/preview/overview-iot-central?WT.mc_id=webinar-particle-pdecarlo).
+Demonstration using the the [Nvidia DeepStream Module from the Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/nvidia.deepstream-iot?WT.mc_id=iot-0000-pdecarlo) with [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/preview/overview-iot-central?WT.mc_id=iot-0000-pdecarlo).
 
 To setup the demo for yourself, or to use as a baseline for your own custom project, follow the instructions below to get started!
 
@@ -22,15 +22,15 @@ Hardware:
   - Note: The power consumption will require that your device is configured to use a [5V/4A barrel adapter](https://amzn.to/32DFsTq) as mentioned [here](https://www.jetsonhacks.com/2019/04/10/jetson-nano-use-more-power/) with an [Open-CV compatible camera](https://web.archive.org/web/20120815172655/http://opencv.willowgarage.com/wiki/Welcome/OS/).
 
 Development Environment:
-- [Visual Studio Code (VSCode)](https://code.visualstudio.com/Download?WT.mc_id=github-deepstreamiotc-pdecarlo)
+- [Visual Studio Code (VSCode)](https://code.visualstudio.com/Download?WT.mc_id=iot-0000-pdecarlo)
 - [Git command line](https://git-scm.com/) 
 
 Cloud Services:
-- An Active [Microsoft Azure Subscription](https://azure.microsoft.com/en-us/get-started?WT.mc_id=github-deepstreamiotc-pdecarlo)
+- An Active [Microsoft Azure Subscription](https://azure.microsoft.com/get-started?WT.mc_id=iot-0000-pdecarlo)
 
 # Creating an Azure IoT Central App 
 
-Sign up for an [Azure Account](https://azure.microsoft.com/en-us/get-started?WT.mc_id=github-deepstreamiotc-pdecarlo), or sign in if you already have one.
+Sign up for an [Azure Account](https://azure.microsoft.com/get-started?WT.mc_id=iot-0000-pdecarlo), or sign in if you already have one.
 
 ![](./assets/azureacct.png)
 
@@ -116,13 +116,13 @@ These builds are provided starting in the [1.0.8 release tag](https://github.com
 # paste in terminal. The comment lines will be ignored.
 
 # Install the IoT Edge repository configuration
-curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list?WT.mc_id=iot-0000-pdecarlo > ./microsoft-prod.list
 
 # Copy the generated list
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 
 # Install the Microsoft GPG public key
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+curl https://packages.microsoft.com/keys/microsoft.asc?WT.mc_id=iot-0000-pdecarlo | gpg --dearmor > microsoft.gpg
 sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
 
 # Perform apt update
@@ -203,7 +203,7 @@ When you have verified your configuration is working, re-enable `sink1` by setti
 
 ## Provisioning the IoT Edge Runtime on the Jetson Nano Device with DPS
 
-To automatically provision your device with [DPS](https://docs.microsoft.com/en-us/azure/iot-dps?WT.mc_id=github-deepstreamiotc-pdecarlo), you need to provide it with appropriate device connection information obtained from IoT Central.
+To automatically provision your device with [DPS](https://docs.microsoft.com/azure/iot-dps?WT.mc_id=iot-0000-pdecarlo), you need to provide it with appropriate device connection information obtained from IoT Central.
 
 To locate this information, in your IoT Central app, select "Devices" then choose the name of your newly created device template.
 
@@ -396,4 +396,4 @@ To create a rule, for example to alert when an Occupancy Threshold has been reac
 
 ## Exporting data to Azure for use in additional Services
 
-Data can be exported from IoT Central to an available Storage Blob, Event Hub, or Service Bus. For more information, consult the relevant [documentation](https://docs.microsoft.com/en-us/azure/iot-central/preview/howto-export-data?WT.mc_id=github-deepstreamiotc-pdecarlo).
+Data can be exported from IoT Central to an available Storage Blob, Event Hub, or Service Bus. For more information, consult the relevant [documentation](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data?WT.mc_id=iot-0000-pdecarlo).
